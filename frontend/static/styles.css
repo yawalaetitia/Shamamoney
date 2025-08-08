@@ -1,0 +1,66 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #333;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+#transaction-list {
+  list-style: none;
+  padding: 0;
+}
+
+#transaction-list li {
+  background-color: #e8f5e9;
+  padding: 10px;
+  margin: 6px 0;
+  border-left: 5px solid #4CAF50;
+  border-radius: 6px;
+}

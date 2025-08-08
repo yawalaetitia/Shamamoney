@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Money Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>💰 Mobile Money Dashboard</h1>
+
+    <div id="login-form">
+      <h2>Connexion</h2>
+      <input type="text" id="username" placeholder="Nom d'utilisateur" />
+      <input type="password" id="password" placeholder="Mot de passe" />
+      <button onclick="login()">Se connecter</button>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <div class="tabs">
+        <button onclick="showTab('transactions')">Transactions</button>
+        <button onclick="showTab('new')">Nouvelle Transaction</button>
+      </div>
+
+      <div id="transactions-tab">
+        <h2>📋 Liste des Transactions</h2>
+        <ul id="transaction-list"></ul>
+      </div>
+
+      <div id="new-tab" class="hidden">
+        <h2>➕ Nouvelle Transaction</h2>
+
+        <input type="number" id="amount" placeholder="Montant" />
+
+        <!-- Sélection du type de transaction -->
+        <select id="transaction_type_id">
+          <option value="depot">Dépôt</option>
+          <option value="retrait">Retrait</option>
+        </select>
+
+        <!-- Sélection de l'opérateur -->
+        <select id="operator_id">
+          <option value="" disabled selected>-- Sélectionnez un opérateur --</option>
+          <option value="1">Wave</option>
+          <option value="2">Orange</option>
+          <option value="3">MTN</option>
+          <option value="4">Moov</option>
+        </select>
+
+        <!-- Sélection de l'utilisateur -->
+        <select id="user_id">
+          <option value="" disabled selected>-- Sélectionnez un utilisateur --</option>
+          <!-- Ces options peuvent être ajoutées dynamiquement en JS si besoin -->
+          <option value="1">admin1</option>
+          <option value="2">admin2</option>
+          <option value="3">superadmin</option>
+        </select>
+
+        <button onclick="createTransaction()">Valider</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
