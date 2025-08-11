@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 import schemas, crud, database
 
-router = APIRouter(prefix="/transaction-types", tags=["Transaction Types"])
+router = APIRouter(prefix="/transaction_types", tags=["Transaction Types"])
 
 def get_db():
     db = database.SessionLocal()

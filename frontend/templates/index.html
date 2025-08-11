@@ -2,65 +2,55 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Money Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💰 Dashboard Mobile Money</title>
   <link rel="stylesheet" href="/static/styles.css" />
-  <script src="/static/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>💰 Mobile Money Dashboard</h1>
+  <div id="app">
+    <h1>💰 Dashboard Mobile Money</h1>
 
-    <div id="login-form">
-      <h2>Connexion</h2>
-      <input type="text" id="username" placeholder="Nom d'utilisateur" />
-      <input type="password" id="password" placeholder="Mot de passe" />
+    <div id="login-section">
+      <input id="username" placeholder="Nom d'utilisateur" autocomplete="username" />
+      <input id="password" type="password" placeholder="Mot de passe" autocomplete="current-password" />
       <button onclick="login()">Se connecter</button>
+      <p id="login-error"></p>
     </div>
 
     <div id="dashboard" class="hidden">
       <div class="tabs">
-        <button onclick="showTab('transactions')">Transactions</button>
-        <button onclick="showTab('new')">Nouvelle Transaction</button>
+        <button id="tab-transactions" class="active" onclick="showTab('transactions')">Transactions</button>
+        <button id="tab-new" onclick="showTab('new-transaction')">Nouvelle Transaction</button>
       </div>
 
       <div id="transactions-tab">
-        <h2>📋 Liste des Transactions</h2>
-        <ul id="transaction-list"></ul>
+        <ul id="transaction-list">
+          <!-- Transactions s'affichent ici -->
+        </ul>
       </div>
 
-      <div id="new-tab" class="hidden">
-        <h2>➕ Nouvelle Transaction</h2>
+      <div id="new-transaction-tab" class="hidden">
+        <label for="amount">Montant</label>
+        <input type="number" id="amount" min="0" placeholder="Ex: 1000" />
 
-        <input type="number" id="amount" placeholder="Montant" />
+        <label for="phone_number">Numéro de téléphone</label>
+        <input type="text" id="phone_number" placeholder="Ex: 0791234567" />
 
-        <!-- Sélection du type de transaction -->
-        <select id="transaction_type_id">
-          <option value="depot">Dépôt</option>
-          <option value="retrait">Retrait</option>
-        </select>
+        <label for="transaction_type_select">Type de transaction</label>
+        <select id="transaction_type_select"></select>
 
-        <!-- Sélection de l'opérateur -->
-        <select id="operator_id">
-          <option value="" disabled selected>-- Sélectionnez un opérateur --</option>
-          <option value="1">Wave</option>
-          <option value="2">Orange</option>
-          <option value="3">MTN</option>
-          <option value="4">Moov</option>
-        </select>
+        <label for="operator_select">Opérateur</label>
+        <select id="operator_select"></select>
 
-        <!-- Sélection de l'utilisateur -->
-        <select id="user_id">
-          <option value="" disabled selected>-- Sélectionnez un utilisateur --</option>
-          <!-- Ces options peuvent être ajoutées dynamiquement en JS si besoin -->
-          <option value="1">admin1</option>
-          <option value="2">admin2</option>
-          <option value="3">superadmin</option>
-        </select>
+        <label for="user_select">Utilisateur</label>
+        <select id="user_select"></select>
 
         <button onclick="createTransaction()">Valider</button>
+        <p id="creation-message"></p>
       </div>
     </div>
   </div>
+
+  <script src="/static/script.js"></script>
 </body>
 </html>

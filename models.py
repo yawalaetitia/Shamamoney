@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, Enum, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, String, Enum, ForeignKey, Float, DateTime, Date, Time
 from sqlalchemy.orm import relationship
-from datetime import datetime
+from datetime import datetime, date, time
 import enum
 
 from database import Base
@@ -34,7 +34,12 @@ class Transaction(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     amount = Column(Float)
-    timestamp = Column(DateTime, default=datetime.utcnow)
+    phone_number = Column(String, index=True)  # Numéro de téléphone
+    transaction_date = Column(Date, default=date.today)  # Date
+    transaction_time = Column(Time, default=datetime.utcnow().time)  # Heure
+    timestamp = Column(DateTime, default=datetime.utcnow)  # Date/heure complète
+    receipt_number = Column(String, unique=True, index=True)  # Numéro de reçu
+
     transaction_type_id = Column(Integer, ForeignKey("transaction_types.id"))
     operator_id = Column(Integer, ForeignKey("operators.id"))
     user_id = Column(Integer, ForeignKey("users.id"))

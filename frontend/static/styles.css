@@ -1,66 +1,211 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f7f9;
+/* Reset & Base */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.container {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
+body {
+  background: #f0f4f8;
   color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+#app {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+  max-width: 720px;
+  width: 100%;
+  padding: 30px 40px 40px;
+}
+h1 {
   text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
-
-input {
+/* Login */
+#login-section {
+  max-width: 400px;
+  margin: 0 auto;
+}
+#login-section input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #3498db;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
-
-button {
-  padding: 10px 15px;
-  margin-top: 10px;
+#login-section input:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+#login-section button {
+  width: 100%;
+  padding: 12px;
+  background: #2980b9;
   border: none;
-  background-color: #4CAF50;
-  color: white;
   border-radius: 8px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  width: 100%;
+  transition: background-color 0.3s ease;
+}
+#login-section button:hover {
+  background: #1f618d;
+}
+#login-error {
+  margin-top: 10px;
+  color: #e74c3c;
+  text-align: center;
+  font-weight: 600;
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
+/* Dashboard Tabs */
 .tabs {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+.tabs button {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 2px solid #2980b9;
+  background: transparent;
+  color: #2980b9;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+.tabs button.active,
+.tabs button:hover {
+  background: #2980b9;
+  color: white;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.6);
 }
 
+/* Transactions List */
+#transactions-tab ul {
+  list-style: none;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+#transactions-tab li {
+  padding: 15px 20px;
+  background: #ecf0f1;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #34495e;
+  word-wrap: break-word;
+}
+#transactions-tab li span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 5px;
+}
+
+/* New Transaction Form */
+#new-transaction-tab {
+  max-width: 450px;
+  margin: 0 auto;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #34495e;
+}
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+#new-transaction-tab button {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#new-transaction-tab button:hover {
+  background: #1e8449;
+}
+#creation-message {
+  margin-top: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+#creation-message.error {
+  color: #e74c3c;
+}
+#creation-message.success {
+  color: #27ae60;
+}
+
+/* Utility */
 .hidden {
   display: none;
 }
 
-#transaction-list {
-  list-style: none;
-  padding: 0;
+/* Scrollbar style for transaction list */
+#transactions-tab ul::-webkit-scrollbar {
+  width: 8px;
+}
+#transactions-tab ul::-webkit-scrollbar-thumb {
+  background-color: #2980b9;
+  border-radius: 10px;
+}
+#transactions-tab ul::-webkit-scrollbar-track {
+  background: #bdc3c7;
+  border-radius: 10px;
 }
 
-#transaction-list li {
-  background-color: #e8f5e9;
-  padding: 10px;
-  margin: 6px 0;
-  border-left: 5px solid #4CAF50;
-  border-radius: 6px;
+/* Responsive */
+@media (max-width: 600px) {
+  #app {
+    padding: 20px 25px 30px;
+  }
+  .tabs {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tabs button {
+    width: 100%;
+  }
+  #new-transaction-tab {
+    max-width: 100%;
+  }
 }

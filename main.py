@@ -5,11 +5,20 @@ from seed import seed_super_admin
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Mobile Money API")
+app = FastAPI(title="ShamaMoney")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],  # ou ["*"] pour autoriser toutes les origines (pas recommandé en prod)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Servir les fichiers statiques (CSS, JS, images, etc.)
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
