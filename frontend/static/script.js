@@ -76,20 +76,31 @@ async function getTransactions() {
     }
 
     transactions.forEach((item) => {
-      list.innerHTML += `
-      <li>Id Transaction: ${item.id}</li></br>
-      <li>Montant: ${item.amount}</li></br>
-      <li>phone_number: ${item.phone_number}</li></br>
-      <li>operator: ${item.operator_id}</li></br>
-      <li>transaction_type: ${item.transaction_type_id}</li></br>
+  const date = new Date(item.timestamp);
 
-      <li>transaction_time: ${item.tansaction_time}</li></br>
+  const heures = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const secondes = String(date.getSeconds()).padStart(2, "0");
 
-`
+  const jour = String(date.getDate()).padStart(2, "0");
+  const mois = String(date.getMonth() + 1).padStart(2, "0"); // Mois commence à 0
+  const annee = date.getFullYear();
+
+  const dateFormatee = `${heures}:${minutes}:${secondes} ${jour}/${mois}/${annee}`;
+
+  list.innerHTML += `
+    <li>Id Transaction: ${item.id}</li></br>
+    <li>Montant: ${item.amount}</li></br>
+    <li>phone_number: ${item.phone_number}</li></br>
+    <li>operator: ${item.operator_id}</li></br>
+    <li>transaction_type: ${item.transaction_type_id}</li></br>
+    <li>transaction_time: ${dateFormatee}</li></br>
+  `;
+});
 
 
       
-    })
+  
     
   } catch {
     alert("Erreur lors de la récupération des transactions");

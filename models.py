@@ -36,8 +36,8 @@ class Transaction(Base):
     amount = Column(Float)
     phone_number = Column(String, index=True)  # Numéro de téléphone
     transaction_date = Column(Date, default=date.today)  # Date
-    transaction_time = Column(Time, default=datetime.utcnow().time)  # Heure
-    timestamp = Column(DateTime, default=datetime.utcnow)  # Date/heure complète
+    transaction_time = Column(Time, default=datetime.now().time())  # Heure
+    timestamp = Column(DateTime, default=datetime.now())  # Date/heure complète
     receipt_number = Column(String, unique=True, index=True)  # Numéro de reçu
 
     transaction_type_id = Column(Integer, ForeignKey("transaction_types.id"))

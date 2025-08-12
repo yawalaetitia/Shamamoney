@@ -37,9 +37,10 @@ def create_transaction(data: TransactionCreate, db: Session = Depends(get_db)):
         operator_id=data.operator_id,
         user_id=data.user_id,
         receipt_number=receipt_num,
-        transaction_date=datetime.utcnow().date(),
-        transaction_time=datetime.utcnow().time()
+        transaction_date=datetime.now().date(),
+        transaction_time=datetime.now().time()
     )
+    print(transaction.transaction_time)
 
     db.add(transaction)
     db.commit()
