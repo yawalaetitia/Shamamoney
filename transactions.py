@@ -7,6 +7,7 @@ from models import Transaction, TransactionType, Operator, User
 from pydantic import BaseModel
 from datetime import datetime
 import uuid
+from sqlalchemy.orm import joinedload
 
 router = APIRouter(prefix="/transactions", tags=["Transactions"])
 
@@ -62,7 +63,11 @@ def create_transaction(data: TransactionCreate, db: Session = Depends(get_db)):
 
 @router.get("/archive")
 def get_transactions_archive(db: Session = Depends(get_db)):
-    transactions = db.query(Transaction).all()
+    transactions = db.query(Transaction).options(
+        joinedload(Transaction.transaction_type),
+        joinedload(Transaction.operator),
+        joinedload(Transaction.user)
+    ).all()
     return transactions
 
 @router.post("/", response_model=schemas.TransactionRead)

@@ -92,8 +92,8 @@ async function getTransactions() {
     <li>Id Transaction: ${item.id}</li></br>
     <li>Montant: ${item.amount}</li></br>
     <li>phone_number: ${item.phone_number}</li></br>
-    <li>operator: ${item.operator_id}</li></br>
-    <li>transaction_type: ${item.transaction_type_id}</li></br>
+    <li>operator: ${item.operator.name}</li></br>
+    <li>transaction_type: ${item.transaction_type.name}</li></br>
     <li>transaction_time: ${dateFormatee}</li></br>
   `;
 });

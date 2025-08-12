@@ -44,6 +44,7 @@ class TransactionBase(BaseModel):
     amount: float
     transaction_type_id: int
     operator_id: int
+    operator_name:str
     user_id: int
 
 class TransactionCreate(TransactionBase): pass
