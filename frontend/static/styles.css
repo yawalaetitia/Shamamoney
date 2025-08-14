@@ -151,7 +151,7 @@ select:focus {
 #new-transaction-tab button {
   width: 100%;
   padding: 12px;
-  background: #27ae60;
+  background: #2980b9;
   border: none;
   border-radius: 8px;
   color: white;
@@ -161,7 +161,7 @@ select:focus {
   transition: background-color 0.3s ease;
 }
 #new-transaction-tab button:hover {
-  background: #1e8449;
+  background: #2980b9;
 }
 #creation-message {
   margin-top: 15px;
@@ -180,17 +180,12 @@ select:focus {
   display: none;
 }
 
-/* Scrollbar style for transaction list */
-#transactions-tab ul::-webkit-scrollbar {
-  width: 8px;
-}
-#transactions-tab ul::-webkit-scrollbar-thumb {
-  background-color: #2980b9;
-  border-radius: 10px;
-}
-#transactions-tab ul::-webkit-scrollbar-track {
-  background: #bdc3c7;
-  border-radius: 10px;
+
+.transactionBox{
+padding: 5px;
+display: flex;
+flex-direction: column;
+box-shadow: 1px 1px 5px 5px ;
 }
 
 /* Responsive */
